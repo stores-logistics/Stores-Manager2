@@ -29,10 +29,12 @@ public class StoreService {
     public Store updateStore(int code, Store store) {
         Store storeToUpdate = entityManager.find(Store.class, code);
         storeToUpdate.setName(store.getName());
-        storeToUpdate.setTypee(store.getTypee());
+        storeToUpdate.setDescription(store.getDescription());
+        storeToUpdate.setType(store.getType());
         storeToUpdate.setOwner(store.getOwner());
-        storeToUpdate.setAddress(store.getAddress());
-        storeToUpdate.setSchedule(store.getSchedule());
+        storeToUpdate.setUbication(store.getUbication());
+        storeToUpdate.setDates(store.getDates());
+        storeToUpdate.setImg(store.getImg());
         return entityManager.merge(storeToUpdate);
     }
 

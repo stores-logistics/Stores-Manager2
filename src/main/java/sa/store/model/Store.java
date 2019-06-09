@@ -14,10 +14,13 @@ public class Store {
     
     private int code;
     private String name;
-    private String typee;
+    private String description;
+    private String type;
     private String owner;
-    private String address;
-    private String schedule;
+    private String ubication;
+    private String dates;
+    private String img;
+
 
     public int getCode() {
         return code;
@@ -33,6 +36,20 @@ public class Store {
       this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getOwner() {
         return owner;
     }
@@ -40,24 +57,24 @@ public class Store {
         this.owner = owner;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUbication() {
+        return ubication;
     }
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getSchedule() {
-        return schedule;
-    }
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public void setUbication(String ubication) {
+        this.ubication = ubication;
     }
 
-    public String getTypee() {
-        return typee;
+    public String getDates() {
+        return dates;
     }
-    public void setTypee(String typee) {
-        this.typee = typee;
+    public void setDates(String dates) {
+        this.dates = dates;
+    }
+
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
     }
 }
