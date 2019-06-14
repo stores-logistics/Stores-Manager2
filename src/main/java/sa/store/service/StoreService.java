@@ -5,6 +5,7 @@ import sa.store.model.Store;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -22,8 +23,10 @@ public class StoreService {
         return entityManager.find(Store.class, code);
     }
 
-    public void createStore(Store store) {
+    public Store createStore(Store store) {
         entityManager.persist(store);
+        entityManager.flush();
+        return store;
     }
 
     public Store updateStore(int code, Store store) {
@@ -38,8 +41,9 @@ public class StoreService {
         return entityManager.merge(storeToUpdate);
     }
 
-    public void deleteStore(int code) {
+    public int deleteStore(int code) {
         Store store = entityManager.find(Store.class, code);
         entityManager.remove(store);
+        return code;
     }
 }

@@ -8,10 +8,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Response.ResponseBuilder;
+
 import java.util.List;
 
 @Path("/stores")
 public class StoreResource {
+
+    ResponseBuilder response;
 
     @Context
     UriInfo uriInfo;
@@ -32,8 +36,10 @@ public class StoreResource {
 
     @POST
     public Response createStore(Store store) {
-        storeService.createStore(store);
-        return Response.status(Response.Status.CREATED).build();
+        Store createdStore = storeService.createStore(store);
+        response = Response.status(Response.Status.CREATED);
+        response.entity(createdStore);
+        return response.build();
     }
 
     @PUT
@@ -46,8 +52,10 @@ public class StoreResource {
     @DELETE
     @Path("{code}")
     public Response deleteStore(@PathParam("code") int code) {
-        storeService.deleteStore(code);
-        return Response.status(Response.Status.OK).build();
+        int deletedStoreCode = storeService.deleteStore(code);
+        response = Response.status(Response.Status.OK);
+        response.entity(deletedStoreCode);
+        return response.build();
     }
 
 }
