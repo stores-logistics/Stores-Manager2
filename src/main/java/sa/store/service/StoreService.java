@@ -5,7 +5,6 @@ import sa.store.model.Store;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -38,7 +37,8 @@ public class StoreService {
         storeToUpdate.setUbication(store.getUbication());
         storeToUpdate.setDates(store.getDates());
         storeToUpdate.setImg(store.getImg());
-        return entityManager.merge(storeToUpdate);
+        entityManager.merge(storeToUpdate);
+        return entityManager.find(Store.class, code);
     }
 
     public int deleteStore(int code) {

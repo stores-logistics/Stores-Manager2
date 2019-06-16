@@ -30,8 +30,11 @@ public class StoreResource {
 
     @GET
     @Path("{code}")
-    public Store getStoreByCode(@PathParam("code") int code) {
-        return storeService.getStoreByCode(code);
+    public Response getStoreByCode(@PathParam("code") int code) {
+        Store store = storeService.getStoreByCode(code);
+        response = Response.status(Response.Status.OK);
+        response.entity(store);
+        return response.build();
     }
 
     @POST
@@ -45,8 +48,10 @@ public class StoreResource {
     @PUT
     @Path("{code}")
     public Response updateStore(@PathParam("code") int code, Store store) {
-        storeService.updateStore(code, store);
-        return Response.status(Response.Status.NO_CONTENT).build();
+        Store updatedStore = storeService.updateStore(code, store);
+        response = Response.status(Response.Status.OK);
+        response.entity(updatedStore);
+        return response.build();
     }
 
     @DELETE
